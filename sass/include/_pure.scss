@@ -1,0 +1,263 @@
+@charset "utf-8";
+/*
+---
+name: CSSフレームワーク「pure」を利用した要素のflex化
+tag:
+  - block
+  - pure
+category:
+  - pure
+---
+グリッドレイアウトを簡易的に実現するためにCSSフレームワーク「pure」をGrid部分のみ利用しています。
+
+要参照
+
+[Grids Fully customizable and responsive CSS grids.](http://purecss.io/grids/)
+
+[Pure を使って 5分でレスポンシブな Blog テンプレートを作る](https://hyper-text.org/archives/2013/06/pure_css_5min_using.shtml)
+```html
+<div class="pure-g">
+	<div class="color-bg_light_gray pure-u-1-2"><div class="mod-border01">50%</div></div>
+	<div class="color-bg_light_gray pure-u-1-2"><div class="mod-border01">50%</div></div>
+	<div class="color-bg_light_gray pure-u-1-3"><div class="mod-border01">33%</div></div>
+	<div class="color-bg_light_gray pure-u-1-3"><div class="mod-border01">33%</div></div>
+	<div class="color-bg_light_gray pure-u-1-3"><div class="mod-border01">33%</div></div>
+	<div class="color-bg_light_gray pure-u-1-4"><div class="mod-border01">25%</div></div>
+	<div class="color-bg_light_gray pure-u-1-4"><div class="mod-border01">25%</div></div>
+	<div class="color-bg_light_gray pure-u-1-4"><div class="mod-border01">25%</div></div>
+	<div class="color-bg_light_gray pure-u-1-4"><div class="mod-border01">25%</div></div>
+	<div class="color-bg_light_gray pure-u-19-24"><div class="mod-border01">79.1667%</div></div>
+	<div class="color-bg_light_gray pure-u-5-24"><div class="mod-border01">20.8333%</div></div>
+	<div class="color-bg_light_gray pure-u-2-5"><div class="mod-border01">40%</div></div>
+	<div class="color-bg_light_gray pure-u-3-5"><div class="mod-border01">60%</div></div>
+</div>
+```
+*/
+.pure-g {
+	letter-spacing: -.31em;
+	text-rendering: optimizespeed;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;
+
+	&-flow {
+		&_reverse {
+			flex-flow: row-reverse wrap;
+		}
+	}
+}
+.ua-ie-8 .pure-g,
+.ua-ie-9 .pure-g { font-family: Arial, $font_gothic_ja;} /* IE8-9だとメイリオ指定でカラム落ちする問題をfix */
+// .ua-firefox .pure-g {
+// 	letter-spacing: -0.4em;
+// 	display: block;
+// }
+.opera-only :-o-prefocus, .pure-g { word-spacing: -.43em; }
+.pure-u { display: inline-block; zoom: 1; letter-spacing: normal; word-spacing: normal; vertical-align: top; text-rendering: auto; }
+
+/* grids-units.css */
+/* "pure-u-*":デスクトップ(PC)用（1024以上）*/
+.pure-u-1,
+.pure-u-1-1,
+.pure-u-1-2,
+.pure-u-1-3,
+.pure-u-2-3,
+.pure-u-1-4,
+.pure-u-3-4,
+.pure-u-1-5,
+.pure-u-2-5,
+.pure-u-3-5,
+.pure-u-4-5,
+.pure-u-5-5,
+.pure-u-1-6,
+.pure-u-5-6,
+.pure-u-1-8,
+.pure-u-3-8,
+.pure-u-5-8,
+.pure-u-7-8,
+.pure-u-1-9,
+.pure-u-1-12,
+.pure-u-5-12,
+.pure-u-7-12,
+.pure-u-11-12,
+.pure-u-1-24,
+.pure-u-2-24,
+.pure-u-3-24,
+.pure-u-4-24,
+.pure-u-5-24,
+.pure-u-6-24,
+.pure-u-7-24,
+.pure-u-8-24,
+.pure-u-9-24,
+.pure-u-10-24,
+.pure-u-11-24,
+.pure-u-12-24,
+.pure-u-13-24,
+.pure-u-14-24,
+.pure-u-15-24,
+.pure-u-16-24,
+.pure-u-17-24,
+.pure-u-18-24,
+.pure-u-19-24,
+.pure-u-20-24,
+.pure-u-21-24,
+.pure-u-22-24,
+.pure-u-23-24,
+.pure-u-24-24 {
+	display: inline-block;
+	zoom: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+}
+.pure-u-1-24 { width: 4.1667%;}
+.pure-u-1-12, .pure-u-2-24 { width: 8.3333%;}
+.pure-u-1-9 { width: 11.1111%;}
+.pure-u-1-8, .pure-u-3-24 { width: 12.5%;}
+.pure-u-1-6, .pure-u-4-24 { width: 16.6667%;}
+.pure-u-1-5 { width: 20%;}
+.pure-u-5-24 { width: 20.8333%;}
+.pure-u-1-4, .pure-u-6-24 { width: 25%;}
+.pure-u-7-24 { width: 29.1667%;}
+.pure-u-1-3, .pure-u-8-24 { width: 33.3333%;}
+.pure-u-3-8, .pure-u-9-24 { width: 37.5%;}
+.pure-u-2-5 { width: 40%;}
+.pure-u-5-12, .pure-u-10-24 { width: 41.6667%;}
+.pure-u-11-24 { width: 45.8333%;}
+.pure-u-1-2, .pure-u-12-24 { width: 50%;}
+.pure-u-13-24 { width: 54.1667%;}
+.pure-u-7-12, .pure-u-14-24 { width: 58.3333%;}
+.pure-u-3-5 { width: 60%;}
+.pure-u-5-8, .pure-u-15-24 { width: 62.5%;}
+.pure-u-2-3, .pure-u-16-24 { width: 66.6667%;}
+.pure-u-17-24 { width: 70.8333%;}
+.pure-u-3-4, .pure-u-18-24 { width: 75%;}
+.pure-u-19-24 { width: 79.1667%;}
+.pure-u-4-5 { width: 80%;}
+.pure-u-5-6, .pure-u-20-24 { width: 83.3333%;}
+.pure-u-7-8, .pure-u-21-24 { width: 87.5%;}
+.pure-u-11-12, .pure-u-22-24 { width: 91.6667%;}
+.pure-u-23-24 { width: 95.8333%;}
+.pure-u-1, .pure-u-1-1, .pure-u-5-5, .pure-u-24-24 { width: 100%;}
+
+/* grids-responsive.css */
+/* "pure-u-lg-*”:タブレット用（767〜1024） */
+@include media(tablet) {
+.pure-u-lg-1, .pure-u-lg-1-1, .pure-u-lg-1-2, .pure-u-lg-1-3, .pure-u-lg-2-3, .pure-u-lg-1-4, .pure-u-lg-3-4, .pure-u-lg-1-5, .pure-u-lg-2-5, .pure-u-lg-3-5, .pure-u-lg-4-5, .pure-u-lg-5-5, .pure-u-lg-1-6, .pure-u-lg-5-6, .pure-u-lg-1-8, .pure-u-lg-3-8, .pure-u-lg-5-8, .pure-u-lg-7-8, .pure-u-lg-1-12, .pure-u-lg-5-12, .pure-u-lg-7-12, .pure-u-lg-11-12, .pure-u-lg-1-24, .pure-u-lg-2-24, .pure-u-lg-3-24, .pure-u-lg-4-24, .pure-u-lg-5-24, .pure-u-lg-6-24, .pure-u-lg-7-24, .pure-u-lg-8-24, .pure-u-lg-9-24, .pure-u-lg-10-24, .pure-u-lg-11-24, .pure-u-lg-12-24, .pure-u-lg-13-24, .pure-u-lg-14-24, .pure-u-lg-15-24, .pure-u-lg-16-24, .pure-u-lg-17-24, .pure-u-lg-18-24, .pure-u-lg-19-24, .pure-u-lg-20-24, .pure-u-lg-21-24, .pure-u-lg-22-24, .pure-u-lg-23-24, .pure-u-lg-24-24 {
+	display: inline-block;
+	zoom: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+}
+.pure-u-lg-1-24 { width: 4.1667%;}
+.pure-u-lg-1-12, .pure-u-lg-2-24 { width: 8.3333%;}
+.pure-u-lg-1-8, .pure-u-lg-3-24 { width: 12.5%;}
+.pure-u-lg-1-6, .pure-u-lg-4-24 { width: 16.6667%;}
+.pure-u-lg-1-5 { width: 20%;}
+.pure-u-lg-5-24 { width: 20.8333%;}
+.pure-u-lg-1-4, .pure-u-lg-6-24 { width: 25%;}
+.pure-u-lg-7-24 { width: 29.1667%;}
+.pure-u-lg-1-3, .pure-u-lg-8-24 { width: 33.3333%;}
+.pure-u-lg-3-8, .pure-u-lg-9-24 { width: 37.5%;}
+.pure-u-lg-2-5 { width: 40%;}
+.pure-u-lg-5-12, .pure-u-lg-10-24 { width: 41.6667%;}
+.pure-u-lg-11-24 { width: 45.8333%;}
+.pure-u-lg-1-2, .pure-u-lg-12-24 { width: 50%;}
+.pure-u-lg-13-24 { width: 54.1667%;}
+.pure-u-lg-7-12, .pure-u-lg-14-24 { width: 58.3333%;}
+.pure-u-lg-3-5 { width: 60%;}
+.pure-u-lg-5-8, .pure-u-lg-15-24 { width: 62.5%;}
+.pure-u-lg-2-3, .pure-u-lg-16-24 { width: 66.6667%;}
+.pure-u-lg-17-24 { width: 70.8333%;}
+.pure-u-lg-3-4, .pure-u-lg-18-24 { width: 75%;}
+.pure-u-lg-19-24 { width: 79.1667%;}
+.pure-u-lg-4-5 { width: 80%;}
+.pure-u-lg-5-6, .pure-u-lg-20-24 { width: 83.3333%;}
+.pure-u-lg-7-8, .pure-u-lg-21-24 { width: 87.5%;}
+.pure-u-lg-11-12, .pure-u-lg-22-24 { width: 91.6667%;}
+.pure-u-lg-23-24 { width: 95.8333%;}
+.pure-u-lg-1, .pure-u-lg-1-1, .pure-u-lg-5-5, .pure-u-lg-24-24 { width: 100%;
+} }
+
+/* "pure-u-md-*”:スマフォ用（320〜767） */
+@include media(sp) {
+.pure-u-md-1, .pure-u-md-1-1, .pure-u-md-1-2, .pure-u-md-1-3, .pure-u-md-2-3, .pure-u-md-1-4, .pure-u-md-3-4, .pure-u-md-1-5, .pure-u-md-2-5, .pure-u-md-3-5, .pure-u-md-4-5, .pure-u-md-5-5, .pure-u-md-1-6, .pure-u-md-5-6, .pure-u-md-1-8, .pure-u-md-3-8, .pure-u-md-5-8, .pure-u-md-7-8, .pure-u-md-1-12, .pure-u-md-5-12, .pure-u-md-7-12, .pure-u-md-11-12, .pure-u-md-1-24, .pure-u-md-2-24, .pure-u-md-3-24, .pure-u-md-4-24, .pure-u-md-5-24, .pure-u-md-6-24, .pure-u-md-7-24, .pure-u-md-8-24, .pure-u-md-9-24, .pure-u-md-10-24, .pure-u-md-11-24, .pure-u-md-12-24, .pure-u-md-13-24, .pure-u-md-14-24, .pure-u-md-15-24, .pure-u-md-16-24, .pure-u-md-17-24, .pure-u-md-18-24, .pure-u-md-19-24, .pure-u-md-20-24, .pure-u-md-21-24, .pure-u-md-22-24, .pure-u-md-23-24, .pure-u-md-24-24 {
+	display: inline-block;
+	zoom: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+}
+.pure-u-md-1-24 { width: 4.1667%;}
+.pure-u-md-1-12, .pure-u-md-2-24 { width: 8.3333%;}
+.pure-u-md-1-8, .pure-u-md-3-24 { width: 12.5%;}
+.pure-u-md-1-6, .pure-u-md-4-24 { width: 16.6667%;}
+.pure-u-md-1-5 { width: 20%;}
+.pure-u-md-5-24 { width: 20.8333%;}
+.pure-u-md-1-4, .pure-u-md-6-24 { width: 25%;}
+.pure-u-md-7-24 { width: 29.1667%;}
+.pure-u-md-1-3, .pure-u-md-8-24 { width: 33.3333%;}
+.pure-u-md-3-8, .pure-u-md-9-24 { width: 37.5%;}
+.pure-u-md-2-5 { width: 40%;}
+.pure-u-md-5-12, .pure-u-md-10-24 { width: 41.6667%;}
+.pure-u-md-11-24 { width: 45.8333%;}
+.pure-u-md-1-2, .pure-u-md-12-24 { width: 50%;}
+.pure-u-md-13-24 { width: 54.1667%;}
+.pure-u-md-7-12, .pure-u-md-14-24 { width: 58.3333%;}
+.pure-u-md-3-5 { width: 60%;}
+.pure-u-md-5-8, .pure-u-md-15-24 { width: 62.5%;}
+.pure-u-md-2-3, .pure-u-md-16-24 { width: 66.6667%;}
+.pure-u-md-17-24 { width: 70.8333%;}
+.pure-u-md-3-4, .pure-u-md-18-24 { width: 75%;}
+.pure-u-md-19-24 { width: 79.1667%;}
+.pure-u-md-4-5 { width: 80%;}
+.pure-u-md-5-6, .pure-u-md-20-24 { width: 83.3333%;}
+.pure-u-md-7-8, .pure-u-md-21-24 { width: 87.5%;}
+.pure-u-md-11-12, .pure-u-md-22-24 { width: 91.6667%;}
+.pure-u-md-23-24 { width: 95.8333%;}
+.pure-u-md-1, .pure-u-md-1-1, .pure-u-md-5-5, .pure-u-md-24-24 { width: 100%; } }
+
+/* "pure-u-sm-*”:スマフォ（ポートレイト）用（320以下） */
+// @media screen and (max-width: 320px) {
+// .pure-u-sm-1, .pure-u-sm-1-1, .pure-u-sm-1-2, .pure-u-sm-1-3, .pure-u-sm-2-3, .pure-u-sm-1-4, .pure-u-sm-3-4, .pure-u-sm-1-5, .pure-u-sm-2-5, .pure-u-sm-3-5, .pure-u-sm-4-5, .pure-u-sm-5-5, .pure-u-sm-1-6, .pure-u-sm-5-6, .pure-u-sm-1-8, .pure-u-sm-3-8, .pure-u-sm-5-8, .pure-u-sm-7-8, .pure-u-sm-1-12, .pure-u-sm-5-12, .pure-u-sm-7-12, .pure-u-sm-11-12, .pure-u-sm-1-24, .pure-u-sm-2-24, .pure-u-sm-3-24, .pure-u-sm-4-24, .pure-u-sm-5-24, .pure-u-sm-6-24, .pure-u-sm-7-24, .pure-u-sm-8-24, .pure-u-sm-9-24, .pure-u-sm-10-24, .pure-u-sm-11-24, .pure-u-sm-12-24, .pure-u-sm-13-24, .pure-u-sm-14-24, .pure-u-sm-15-24, .pure-u-sm-16-24, .pure-u-sm-17-24, .pure-u-sm-18-24, .pure-u-sm-19-24, .pure-u-sm-20-24, .pure-u-sm-21-24, .pure-u-sm-22-24, .pure-u-sm-23-24, .pure-u-sm-24-24 {
+// 	display: inline-block;
+// 	zoom: 1;
+// 	letter-spacing: normal;
+// 	word-spacing: normal;
+// 	vertical-align: top;
+// 	text-rendering: auto;
+// }
+// .pure-u-sm-1-24 { width: 4.1667%;}
+// .pure-u-sm-1-12, .pure-u-sm-2-24 { width: 8.3333%;}
+// .pure-u-sm-1-8, .pure-u-sm-3-24 { width: 12.5%;}
+// .pure-u-sm-1-6, .pure-u-sm-4-24 { width: 16.6667%;}
+// .pure-u-sm-1-5 { width: 20%;}
+// .pure-u-sm-5-24 { width: 20.8333%;}
+// .pure-u-sm-1-4, .pure-u-sm-6-24 { width: 25%;}
+// .pure-u-sm-7-24 { width: 29.1667%;}
+// .pure-u-sm-1-3, .pure-u-sm-8-24 { width: 33.3333%;}
+// .pure-u-sm-3-8, .pure-u-sm-9-24 { width: 37.5%;}
+// .pure-u-sm-2-5 { width: 40%;}
+// .pure-u-sm-5-12, .pure-u-sm-10-24 { width: 41.6667%;}
+// .pure-u-sm-11-24 { width: 45.8333%;}
+// .pure-u-sm-1-2, .pure-u-sm-12-24 { width: 50%;}
+// .pure-u-sm-13-24 { width: 54.1667%;}
+// .pure-u-sm-7-12, .pure-u-sm-14-24 { width: 58.3333%;}
+// .pure-u-sm-3-5 { width: 60%;}
+// .pure-u-sm-5-8, .pure-u-sm-15-24 { width: 62.5%;}
+// .pure-u-sm-2-3, .pure-u-sm-16-24 { width: 66.6667%;}
+// .pure-u-sm-17-24 { width: 70.8333%;}
+// .pure-u-sm-3-4, .pure-u-sm-18-24 { width: 75%;}
+// .pure-u-sm-19-24 { width: 79.1667%;}
+// .pure-u-sm-4-5 { width: 80%;}
+// .pure-u-sm-5-6, .pure-u-sm-20-24 { width: 83.3333%;}
+// .pure-u-sm-7-8, .pure-u-sm-21-24 { width: 87.5%;}
+// .pure-u-sm-11-12, .pure-u-sm-22-24 { width: 91.6667%;}
+// .pure-u-sm-23-24 { width: 95.8333%;}
+// .pure-u-sm-1, .pure-u-sm-1-1, .pure-u-sm-5-5, .pure-u-sm-24-24 { width: 100%; } }

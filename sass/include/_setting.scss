@@ -1,0 +1,67 @@
+@charset "utf-8";
+// ============================================================
+// 設定
+// ============================================================
+// SVG
+$experimental-support-for-svg: true;
+$experimental-support-for-pie: false;
+
+// Compass ブラウザサポート
+$legacy-support-for-ie6 : false;
+$legacy-support-for-ie7 : false;
+
+// ベンダープレフィックス サポート
+@mixin exp($property, $value,
+	$webkit		: $experimental-support-for-webkit,
+	$moz		: $experimental-support-for-mozilla,
+	$ms			: $experimental-support-for-microsoft,
+	$o			: $experimental-support-for-opera,
+	$official	: true
+) {
+	@if $webkit	and $experimental-support-for-webkit	{ -webkit-#{$property}: $value;}
+	@if $moz	and $experimental-support-for-mozilla	{    -moz-#{$property}: $value;}
+	@if $ms		and $experimental-support-for-microsoft	{     -ms-#{$property}: $value;}
+	@if $o		and $experimental-support-for-opera		{      -o-#{$property}: $value;}
+	@if $official										{         #{$property}: $value;}
+}
+
+// device breakpoint em
+$break-320: 20em;
+$break-321: 20.0625em;
+$break-480: 30em;
+$break-600: 37.5em;
+$break-767: 47.938em;
+$break-768: 48em;
+$break-980: 61.25em;
+$break-1024: 64em;
+$break-1200: 75em;
+$break-1224: 76.5em;
+$break-1280: 80em;
+$break-1366: 85.375em;
+$break-1824: 114em;
+
+// 色定義
+$color-red: #dd2211;
+$color-light-red: #ffd8db;
+$color-green: #61b14b;
+$color-light-green: #d2f6c8;
+$color-blue: #0066aa;
+$color-main-blue: #0088de;
+$color-purple: #724c8c;
+$color-yellow: #fffeef;
+$color-yellow_deep: #fffbc5;
+$color-orange: #eb5505;
+$color-pink: #fb5d5d;
+$color-brown: #4f3615;
+
+$color-fb: #41529a;
+$color-tw: #5da8eb;
+$color-line: #00bc2a;
+
+// 文字定義
+$font_alphabet: "Times New Roman", "AXIS Std", sans-serif;
+$font_gothic_ja: MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+$font_gothic: $font_gothic_ja;
+$font_mincho: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "HGS明朝E", Meiryo, sans-serif;
+
+// ============================================================

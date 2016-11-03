@@ -1,0 +1,45 @@
+			<ul class="contents-topicPath-ul clearfix" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<li class="contents-topicPath-li" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a class="contents-topicPath-a" itemprop="item" href="/"><span itemprop="name">トップ</span></a>
+					<meta itemprop="position" content="1" />
+				</li>
+				<%
+				var parentItems = null;
+				var item = null;
+				var defaultPos = 2;
+				for(var i=0; i < pageDir.length; i++) {
+					parentItems = item ? item[pageDir[i]] : env.meta[pageDir[i]];
+					item = item ? item[pageDir[i]] : env.meta[pageDir[i]];
+
+					if(pageDir[i] === 'index') continue;
+					if(!item.breadcrumb) {
+						if(item.index) {
+							item = item.index;
+						} else {
+							--defaultPos;
+							continue;
+						}
+					}
+
+					var breadcrumbStr = null;
+					var item_class = null;
+					var name_class = null;
+					if(item.breadcrumb.title) {
+						breadcrumbStr = item.breadcrumb.title;
+						item_class = item.breadcrumb.item_class;
+						name_class = item.breadcrumb.name_class;
+					} else {
+						breadcrumbStr = item.breadcrumb;
+					}
+				-%>
+<li class="contents-topicPath-li" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a class="contents-topicPath-a<%= item_class %>" itemprop="item" href="<%= item.url %>">
+						<span class="contents-topicPath-span<%= name_class %>" itemprop="name"><%= breadcrumbStr %></span>
+					</a>
+					<meta itemprop="position" content="<%= Number(i) + defaultPos %>" />
+				</li>
+			<%
+				item = parentItems;
+			}
+			-%>
+</ul>

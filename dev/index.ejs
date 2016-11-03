@@ -1,0 +1,23 @@
+<%- include(`${env.root}/common/partial/_loadMetaJson`, { array: ['index'] }) -%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="<%= page.keywords %>">
+	<meta name="description" content="<%= page.description %>">
+	<title><%= page.title %></title>
+<%- include(`${env.root}/common/include/_head`, { page: pageDir[0] }) -%>
+</head>
+<body>
+<div id="pagetop" class="container <%= page.category_class %>">
+	<header class="header inc_common_header"><!-- /common/include/inc_common_header --></header>
+
+	<main class="contents clearfix">
+		aaaaa
+	</main>
+
+	<footer class="footer inc_common_footer"><!-- /common/include/inc_common_footer --></footer>
+</div>
+<script type="text/javascript" src="/common/js/import.js"></script>
+</body>
+</html>

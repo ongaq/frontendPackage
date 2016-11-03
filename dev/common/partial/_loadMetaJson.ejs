@@ -1,0 +1,7 @@
+<%
+pageDir = array;
+page = null;
+for(var i=0; i < pageDir.length; i++) {
+	page = page ? page[pageDir[i]] : env.meta[pageDir[i]];
+}
+-%>

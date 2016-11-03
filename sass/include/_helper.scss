@@ -1,0 +1,641 @@
+@charset "utf-8";
+// ====================================== //
+// helper //
+@mixin module {
+/*
+---
+name: 横幅の指定
+category:
+  - helper
+  - helper/width
+
+---
+5%刻みで指定が出来ます。
+```html
+
+<div class="width-u-5 color-bg_light_gray">test</div>
+<div class="width-u-10 color-bg_light_gray">test</div>
+<div class="width-u-15 color-bg_light_gray">test</div>
+<div class="width-u-20 color-bg_light_gray">test</div>
+<div class="width-u-25 color-bg_light_gray">test</div>
+<div class="width-u-30 color-bg_light_gray">test</div>
+<div class="width-u-35 color-bg_light_gray">test</div>
+<div class="width-u-40 color-bg_light_gray">test</div>
+<div class="width-u-45 color-bg_light_gray">test</div>
+<div class="width-u-50 color-bg_light_gray">test</div>
+<div class="width-u-55 color-bg_light_gray">test</div>
+<div class="width-u-60 color-bg_light_gray">test</div>
+<div class="width-u-65 color-bg_light_gray">test</div>
+<div class="width-u-70 color-bg_light_gray">test</div>
+<div class="width-u-75 color-bg_light_gray">test</div>
+<div class="width-u-80 color-bg_light_gray">test</div>
+<div class="width-u-85 color-bg_light_gray">test</div>
+<div class="width-u-90 color-bg_light_gray">test</div>
+<div class="width-u-95 color-bg_light_gray">test</div>
+<div class="width-u-100 color-bg_light_gray">test</div>
+```
+*/
+	// width
+	@for $i from 1 through 20 {
+		.width-u-#{$i * 5} { width: #{$i * 5 +'%'};}
+	}
+
+	// space
+	@for $i from 1 through 10 {
+		.space-u {
+			&-#{$i * 5} {
+				margin-top: -#{$i * 5}px;
+				margin-left: -#{$i * 5}px;
+
+				&-child {
+					padding-top: #{$i * 5}px;
+					padding-left: #{$i * 5}px;
+				}
+			}
+		}
+	}
+
+/*
+---
+name: marginの指定
+tag:
+  - margin
+  - outsourcingCSS
+category:
+  - helper
+  - helper/margin
+---
+5px刻みで0から250pxまで指定が出来ます。
+
+全方向指定のma**は10px刻みで100pxまでです。
+
+mt0～mt250 - margin-top: 0px ～ 250px
+
+mr0～mr250 - margin-right: 0px ～ 250px
+
+mb0～mb250 - margin-bottom: 0px ～ 250px
+
+ml0～ml250 - margin-left: 0px ～ 250px
+
+ma0～ma100 - margin: 0px ～ 100px
+
+```html
+<div class="mt50">test</div>
+<div class="mb20">test</div>
+<span class="mr20">test</span><span class="mr20">test</span>
+<span class="ml20">test</span><span class="ml20">test</span>
+```
+*/
+
+/*
+---
+name: paddingの指定
+tag:
+  - padding
+  - outsourcingCSS
+category:
+  - helper
+  - helper/padding
+---
+5px刻みで0から250pxまで指定が出来ます。
+
+全方向指定のpa**は10px刻みで100pxまでです。
+
+pt0～pt250 - padding-top: 0px ～ 250px
+
+pr0～pr250 - padding-right: 0px ～ 250px
+
+pb0～pb250 - padding-bottom: 0px ～ 250px
+
+pl0～pl250 - padding-left: 0px ～ 250px
+
+pa0～pa100 - padding: 0px ～ 100px
+```html
+<div class="pt50">test</div>
+<div class="pb20">test</div>
+<span class="pr20">test</span><span class="mr20">test</span>
+<span class="pl20">test</span><span class="ml20">test</span>
+```
+*/
+
+/*
+---
+name: 文字色の指定
+tag:
+  - color
+category:
+  - helper
+  - helper/color
+---
+```html
+<div class="fw_bold">
+<div class="width-u-100 color_black">#000</div>
+<div class="width-u-100 color_gray">#666</div>
+<div class="width-u-100 color_white">#fff</div>
+<div class="width-u-100 color_red">#dd2211</div>
+<div class="width-u-100 color_green">#61b14b</div>
+<div class="width-u-100 color_purple">#724c8c</div>
+<div class="width-u-100 color_yellow">#fffeef</div>
+<div class="width-u-100 color_orange">#eb5505</div>
+<div class="width-u-100 color_blue">#0066aa</div>
+<div class="width-u-100 color_brown">#4f3615</div>
+<div class="width-u-100 color_pink">#fb5d5d</div>
+<div class="width-u-100 color_tw">#5da8eb</div>
+<div class="width-u-100 color_fb">#41529a</div>
+<div class="width-u-100 color_line">#00bc2a</div>
+<div class="width-u-100 color_light_red">#ffd8db</div>
+<div class="width-u-100 color_light_green">#d2f6c8</div>
+<div class="width-u-100 color_light_black">#333</div>
+<div class="width-u-100 color_light_black2">#777</div>
+<div class="width-u-100 color_light_gray">#999</div>
+<div class="width-u-100 color_light_gray2">#ccc</div>
+<div class="width-u-100 color_light_gray3">#ddd</div>
+<div class="width-u-100 color_light_gray4">#eee</div>
+<div class="width-u-100 color_light_gray5">#f2f2f2</div>
+</div>
+```
+*/
+	.color {
+		&_black { color: #000;}
+		&_gray { color: #666;}
+		&_white { color: #fff;}
+		&_red { color: $color-red;}
+		&_green { color: $color-green;}
+		&_purple { color: $color-purple;}
+		&_yellow { color: $color-yellow;}
+		&_orange { color: $color-orange;}
+		&_blue { color: $color-blue;}
+		&_brown { color: $color-brown;}
+		&_pink { color: $color-pink;}
+		&_tw { color: $color-tw;}
+		&_fb { color: $color-fb;}
+		&_line { color: $color-line;}
+		&_light {
+			&_red { color: $color-light-red;}
+			&_green { color: $color-light-green;}
+			&_black { color: #333;}
+			&_black2 { color: #777;}
+			&_gray { color: #999;}
+			&_gray2 { color: #ccc;}
+			&_gray3 { color: #ddd;}
+			&_gray4 { color: #eee;}
+			&_gray5 { color: #f2f2f2;}
+		}
+
+/*
+---
+name: 背景色の指定
+tag:
+  - color
+category:
+  - helper
+  - helper/color
+---
+```html
+<div class="width-u-100 color-bg_black">#000</div>
+<div class="width-u-100 color-bg_gray">#666</div>
+<div class="width-u-100 color-bg_white">#fff</div>
+<div class="width-u-100 color-bg_red">#dd2211</div>
+<div class="width-u-100 color-bg_green">#61b14b</div>
+<div class="width-u-100 color-bg_purple">#724c8c</div>
+<div class="width-u-100 color-bg_yellow">#fffeef</div>
+<div class="width-u-100 color-bg_orange">#eb5505</div>
+<div class="width-u-100 color-bg_blue">#0066aa</div>
+<div class="width-u-100 color-bg_brown">#4f3615</div>
+<div class="width-u-100 color-bg_pink">#fb5d5d</div>
+<div class="width-u-100 color-bg_tw">#5da8eb</div>
+<div class="width-u-100 color-bg_fb">#41529a</div>
+<div class="width-u-100 color-bg_line">#00bc2a</div>
+<div class="width-u-100 color-bg_light_red">#ffd8db</div>
+<div class="width-u-100 color-bg_light_green">#d2f6c8</div>
+<div class="width-u-100 color-bg_light_black">#333</div>
+<div class="width-u-100 color-bg_light_black2">#777</div>
+<div class="width-u-100 color-bg_light_gray">#999</div>
+<div class="width-u-100 color-bg_light_gray2">#ccc</div>
+<div class="width-u-100 color-bg_light_gray3">#ddd</div>
+<div class="width-u-100 color-bg_light_gray4">#eee</div>
+<div class="width-u-100 color-bg_light_gray5">#f2f2f2</div>
+```
+*/
+		&-bg {
+			&_black { background-color: #000;}
+			&_gray { background-color: #666;}
+			&_white { background-color: #fff;}
+			&_red { background-color: $color-red;}
+			&_green { background-color: $color-green;}
+			&_purple { background-color: $color-purple;}
+			&_yellow { background-color: $color-yellow;}
+			&_orange { background-color: $color-orange;}
+			&_blue { background-color: $color-blue;}
+			&_brown { background-color: $color-brown;}
+			&_pink { background-color: $color-pink;}
+			&_tw { background-color: $color-tw;}
+			&_fb { background-color: $color-fb;}
+			&_line { background-color: $color-line;}
+			&_light {
+				&_red { background-color: $color-light-red;}
+				&_green { background-color: $color-light-green;}
+				&_black { background-color: #333;}
+				&_black2 { background-color: #777;}
+				&_gray { background-color: #999;}
+				&_gray2 { background-color: #ccc;}
+				&_gray3 { background-color: #ddd;}
+				&_gray4 { background-color: #eee;}
+				&_gray5 { background-color: #f2f2f2;}
+			}
+		}
+
+/*
+---
+name: ボーダー色の指定
+tag:
+  - color
+  - border
+category:
+  - helper
+  - helper/color
+---
+```html
+<div class="width-u-100 mod-border01 color-border_black">#000</div>
+<div class="width-u-100 mod-border01 color-border_gray">#666</div>
+<div class="width-u-100 mod-border01 color-border_white">#fff</div>
+<div class="width-u-100 mod-border01 color-border_red">#dd2211</div>
+<div class="width-u-100 mod-border01 color-border_green">#61b14b</div>
+<div class="width-u-100 mod-border01 color-border_purple">#724c8c</div>
+<div class="width-u-100 mod-border01 color-border_yellow">#fffeef</div>
+<div class="width-u-100 mod-border01 color-border_orange">#eb5505</div>
+<div class="width-u-100 mod-border01 color-border_blue">#0066aa</div>
+<div class="width-u-100 mod-border01 color-border_brown">#4f3615</div>
+<div class="width-u-100 mod-border01 color-border_pink">#fb5d5d</div>
+<div class="width-u-100 mod-border01 color-border_tw">#5da8eb</div>
+<div class="width-u-100 mod-border01 color-border_fb">#41529a</div>
+<div class="width-u-100 mod-border01 color-border_line">#00bc2a</div>
+<div class="width-u-100 mod-border01 color-border_light_red">#ffd8db</div>
+<div class="width-u-100 mod-border01 color-border_light_green">#d2f6c8</div>
+<div class="width-u-100 mod-border01 color-border_light_black">#333</div>
+<div class="width-u-100 mod-border01 color-border_light_black2">#777</div>
+<div class="width-u-100 mod-border01 color-border_light_gray">#999</div>
+<div class="width-u-100 mod-border01 color-border_light_gray2">#ccc</div>
+<div class="width-u-100 mod-border01 color-border_light_gray3">#ddd</div>
+<div class="width-u-100 mod-border01 color-border_light_gray4">#eee</div>
+<div class="width-u-100 mod-border01 color-border_light_gray5">#f2f2f2</div>
+```
+*/
+		&-border {
+			&_black { border-color: #000;}
+			&_gray { border-color: #666;}
+			&_white { border-color: #fff;}
+			&_red { border-color: $color-red;}
+			&_green { border-color: $color-green;}
+			&_purple { border-color: $color-purple;}
+			&_yellow { border-color: $color-yellow;}
+			&_orange { border-color: $color-orange;}
+			&_blue { border-color: $color-blue;}
+			&_brown { border-color: $color-brown;}
+			&_pink { border-color: $color-pink;}
+			&_tw { border-color: $color-tw;}
+			&_fb { border-color: $color-fb;}
+			&_line { border-color: $color-line;}
+			&_light {
+				&_red { border-color: $color-light-red;}
+				&_green { border-color: $color-light-green;}
+				&_black { border-color: #333;}
+				&_black2 { border-color: #777;}
+				&_gray { border-color: #999;}
+				&_gray2 { border-color: #ccc;}
+				&_gray3 { border-color: #ddd;}
+				&_gray4 { border-color: #eee;}
+				&_gray5 { border-color: #f2f2f2;}
+			}
+		}
+	}
+
+/*
+---
+name: ボーダー幅の指定
+tag:
+  - border
+category:
+  - helper
+  - helper/border
+---
+```html
+<div class="border-width_1 mod-border01">1px</div>
+<div class="border-width_2 mod-border01">2px</div>
+<div class="border-width_3 mod-border01">3px</div>
+<div class="border-width_4 mod-border01">4px</div>
+<div class="border-width_5 mod-border01">5px</div>
+```
+*/
+	.border {
+		&-width {
+			&_1 { border-width: 1px;}
+			&_2 { border-width: 2px;}
+			&_3 { border-width: 3px;}
+			&_4 { border-width: 4px;}
+			&_5 { border-width: 5px;}
+		}
+	}
+
+/*
+---
+name: ボーダー削除の指定
+tag:
+  - border
+category:
+  - helper
+  - helper/border
+---
+```html
+<div class="mod-border01">border: none;</div>
+<div class="mod-border01 bo_none">border: none;</div>
+```
+*/
+	.bo_none { border: none;}
+
+/*
+---
+name: positionの指定
+category:
+  - helper
+  - helper/other
+---
+```html
+<div class="pos_relative">position: relative;</div>
+<div class="pos_absolute">position: absolute;</div>
+<div class="pos_static">position: static;</div>
+```
+*/
+
+	.pos_relative { position: relative;}
+	.pos_absolute { position: absolute;}
+	.pos_static { position: static;}
+	.pos_fixed { position: fixed;}
+
+/*
+---
+name: 文字サイズの指定
+tag:
+  - text
+category:
+  - helper
+  - helper/text
+---
+```html
+<div class="fs_large_x">40px</div>
+<div class="fs_large_m">32px</div>
+<div class="fs_large_s">24px</div>
+<div class="fs_large">20px</div>
+<div class="fs_middle">16px</div>
+<div class="fs_small">14px</div>
+<div class="fs_small_s">12px</div>
+<div class="fs_small_x">10px</div>
+```
+*/
+
+	.fs {
+		&_small {
+			font-size: 14px;
+			&_s { font-size: 12px;}
+			&_x { font-size: 10px;}
+		}
+		&_middle { font-size: 16px;}
+		&_large {
+			font-size: 20px;
+			&_s { font-size: 24px;}
+			&_m { font-size: 32px;}
+			&_x { font-size: 40px;}
+		}
+	}
+/*
+---
+name: 文字の太さを指定
+tag:
+  - text
+category:
+  - helper
+  - helper/text
+---
+```html
+<div class="fw_normal">normal</div>
+<div class="fw_bold">bold</div>
+```
+*/
+	.fw_normal { font-weight: normal;}
+	.fw_bold { font-weight: bold;}
+
+/*
+---
+name: 行間の指定
+tag:
+  - text
+category:
+  - helper
+  - helper/text
+---
+```html
+<div class="lh_10">line-height: 1</div>
+<div class="lh_11">line-height: 1.1</div>
+<div class="lh_12">line-height: 1.2</div>
+<div class="lh_13">line-height: 1.3</div>
+<div class="lh_14">line-height: 1.4</div>
+<div class="lh_15">line-height: 1.5</div>
+<div class="lh_16">line-height: 1.6</div>
+<div class="lh_17">line-height: 1.7</div>
+<div class="lh_18">line-height: 1.8</div>
+<div class="lh_19">line-height: 1.9</div>
+<div class="lh_20">line-height: 2</div>
+```
+*/
+	.lh_10 { line-height: 1;}
+	.lh_11 { line-height: 1.1;}
+	.lh_12 { line-height: 1.2;}
+	.lh_13 { line-height: 1.3;}
+	.lh_14 { line-height: 1.4;}
+	.lh_15 { line-height: 1.5;}
+	.lh_16 { line-height: 1.6;}
+	.lh_17 { line-height: 1.7;}
+	.lh_18 { line-height: 1.8;}
+	.lh_19 { line-height: 1.9;}
+	.lh_20 { line-height: 2;}
+
+/*
+---
+name: 文字間の指定
+tag:
+  - text
+category:
+  - helper
+  - helper/text
+---
+```html
+<div class="ls_m41">letter-spacing: -0.41em</div>
+<div class="ls_m31">letter-spacing: -0.31em</div>
+<div class="ls_m2">letter-spacing: -2px</div>
+<div class="ls_m1">letter-spacing: -1px</div>
+<div class="ls_0">letter-spacing: normal</div>
+<div class="ls_p1">letter-spacing: 1px</div>
+<div class="ls_p2">letter-spacing: 2px</div>
+<div class="ls_p3">letter-spacing: 3px</div>
+<div class="ls_p4">letter-spacing: 4px</div>
+```
+*/
+	.ls_m41 { letter-spacing: -0.41em;}
+	.ls_m31 { letter-spacing: -0.31em;}
+	.ls_m2 { letter-spacing: -2px;}
+	.ls_m1 { letter-spacing: -1px;}
+	.ls_0 { letter-spacing: normal;}
+	.ls_p1 { letter-spacing: 1px;}
+	.ls_p2 { letter-spacing: 2px;}
+	.ls_p3 { letter-spacing: 3px;}
+	.ls_p4 { letter-spacing: 4px;}
+
+/*
+---
+name: 行揃えの位置指定
+tag:
+  - text
+category:
+  - helper
+  - helper/text
+---
+```html
+<div class="ta_left">左揃え</div>
+<div class="ta_center">中央揃え</div>
+<div class="ta_right">右揃え</div>
+```
+*/
+	.ta_left { text-align: left;}
+	.ta_center { text-align: center;}
+	.ta_right { text-align: right;}
+
+/*
+---
+name: 縦方向の揃え位置指定
+tag:
+  - text
+  - table
+category:
+  - helper
+  - helper/text
+---
+```html
+<table class="width-u-100 mod-table_fixed">
+<tr>
+	<td height="100" class="va_top">上揃え</td>
+	<td height="100" class="va_middle">中央揃え</td>
+	<td height="100" class="va_bottom">下揃え</td>
+</tr>
+</table>
+```
+*/
+	.va_top { vertical-align: top;}
+	.va_middle { vertical-align: middle;}
+	.va_bottom { vertical-align: bottom;}
+
+/*
+---
+name: floatの指定
+tag:
+  - block
+category:
+  - helper
+  - helper/block
+---
+```html
+<div class="clearfix">
+	<div class="fl_left">float: left;</div>
+	<div class="fl_right">float: right;</div>
+	<div class="fl_right fl_none">float: none;</div>
+</div>
+```
+*/
+	.fl_left { float: left;}
+	.fl_right { float: right;}
+	.fl_none { float: none;}
+
+/*
+---
+name: blockの指定
+tag:
+  - block
+category:
+  - helper
+  - helper/block
+---
+```html
+<div class="di_block">display: block;</div>
+<div class="di_iblock">display: inline-block;</div>
+<div class="di_inline">display: inline;</div>
+<div class="di_none">display: none;</div>
+```
+*/
+	.di_block { display: block;}
+	.di_iblock { display: inline-block;}
+	.di_inline { display: inline;}
+	.di_none { display: none;}
+
+/*
+---
+name: clearの指定
+tag:
+  - block
+category:
+  - helper
+  - helper/block
+---
+```html
+<div class="cl_both">clear: both;</div>
+```
+*/
+	.cl_both { clear: both;}
+
+	// 透過度
+	.opacity a {
+		transition: all 0.3s ease;
+		opacity: 1;
+
+		&:hover {
+			opacity: 0.55;
+		}
+
+		@include media(sp) {
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	// 汎用リスト
+	.ul {
+		&-disc,&-circle,&-square,&-decimal {
+			margin-left: 20px;
+		}
+		&-disc li { list-style: disc;}
+		&-circle li { list-style: circle;}
+		&-square li { list-style: square;}
+		&-decimal li { list-style: decimal;}
+	}
+
+	// 画像アイコンクラス
+	.imgicon {
+		&:after { @include pseudo-inlineblock;}
+	}
+	.icon {
+		&-blank:before {
+			@include pseudo-inlineblock;
+			margin-right: 7px;
+			width: 9px;
+			height: 8px;
+			background: url("../images/icon-blank_s.png") no-repeat;
+		}
+	}
+
+	// 印刷禁止
+	@media print {
+		.print_none {
+			display: none;
+		}
+	}
+}
+
+// ====================================== //

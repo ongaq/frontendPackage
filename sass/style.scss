@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* ====================================== */
+/* clearfix */
+@import "include/include";
+%clearfix {
+	zoom: 1;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+@mixin clearfix {
+	/* clearfix is already applied */
+	@extend %clearfix;
+}
+%pseudo-block {
+	position: relative;
+	content: "";
+	display: block;
+}
+%pseudo-inlineblock {
+	position: relative;
+	content: "";
+	display: inline-block;
+}
+%pseudo-absolute {
+	position: absolute;
+	content: "";
+	display: block;
+}
+@mixin pseudo-block { @extend %pseudo-block;}
+@mixin pseudo-inlineblock { @extend %pseudo-inlineblock;}
+@mixin pseudo-absolute { @extend %pseudo-absolute;}
+
+.clearfix {
+	@include clearfix;
+}
+/* ====================================== */
+/* normalize */
+// @import "include/ress";
+/* ====================================== */
+/* module-body */
+@font-face {
+	font-family: "MyYuGothicM";
+	font-weight: normal;
+	src: local("YuGothic-Medium");
+}
+@font-face {
+	font-family: "MyYuGothicM";
+	font-weight: bold;
+	src: local("YuGothic-Bold");
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	font-size: 1.3rem;
+	font-family: $font_gothic;
+}
+/* ====================================== */
+/*!
+ * Pure v0.6.0
+ * Copyright 2014 Yahoo! Inc. All rights reserved.
+ * Licensed under the BSD License.
+ * https://github.com/yahoo/pure/blob/master/LICENSE.md
+ */
+@import "include/pure";
+/* ====================================== */
+/* layout */
+@import "include/module";
+
+/* ====================================== */
+/* contents */
+.container {
+	// mobile first!
+	background-color: red;
+	
+	@include media(tablet) {
+		background-color: yellow;
+	}
+	@include media(desktop) {
+		background-color: green;
+	}
+}
+
+/* ====================================== */
+/* helper module */
+@include module;
+/* ====================================== */

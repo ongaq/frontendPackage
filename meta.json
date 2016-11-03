@@ -1,0 +1,54 @@
+{
+	"index": {
+		"url": "/",
+		"category_class": "index",
+		"title": "テストサイト",
+		"keywords": "",
+		"description": ""
+	},
+	"business": {
+		"index": {
+			"url": "/business/",
+			"category_class": "index",
+			"title": "テストサイト",
+			"keywords": "",
+			"description": ""
+		}
+	},
+	"information": {
+		"index": {
+			"url": "/information/",
+			"category_class": "info",
+			"title": "新着情報 | テストサイト",
+			"breadcrumb": "新着情報",
+			"keywords": "",
+			"description": ""
+		},
+		"detail": {
+			"template": {
+				"url": "/information/detail/template.html",
+				"category_class": "info",
+				"title": "$記事タイトル$ | テストサイト",
+				"breadcrumb": {
+					"title": "$記事タイトル$",
+					"item_class": " vn_url",
+					"name_class": " vn_title_str"
+				},
+				"keywords": "",
+				"description": ""
+			},
+			"template_event": {
+				"url": "/information/detail/template_event.html",
+				"category_class": "info",
+				"title": "$イベント名称$ | テストサイト",
+				"breadcrumb": {
+					"title": "$イベント名称$",
+					"item_class": " vn_url",
+					"name_class": " vn_title_str"
+				},
+				"keywords": "",
+				"description": ""
+			}
+		}
+	}
+}

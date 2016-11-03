@@ -1,0 +1,111 @@
+@charset "utf-8";
+// ====================================== //
+// parts //
+@mixin pseudo($float:none, $position:relative, $display:block) {
+	@if $position == relative { position: relative;}
+	@else if $position == absolute { position: absolute;}
+	@else if $position == static { position: static;}
+	content: "";
+	@if $float == left { float: left;}
+	@else if $float == right { float: right;}
+	@else if $float == none {}
+	@if $display == block { display: block;}
+	@else if $display == inline { display: inline;}
+	@else if $display == inline-block { display: inline-block;}
+	@else if $display == none { display: none;}
+}
+@mixin media($point: sp) {
+	$experimental-support-for-mozilla : false;
+	$experimental-support-for-microsoft : false;
+
+	@if $point == desktop {
+		@media (min-width: $break-1200) { @content; }
+	} @else if $point == tablet {
+		@media (min-width: $break-768) {
+			@content;
+		}
+	} @else if $point == mobile or $point == sp {
+		@media only screen
+		 and (min-width : $break-320)
+		 and (max-width : $break-767) {
+			 @content;
+		 }
+	}
+}
+@mixin dotted($color:rgba(#000, 1.0), $stripe:1, $spacing:4, $height:1) {
+	@include background(linear-gradient(
+		to right,
+		color-stops(
+			$color,
+			$color ($stripe / ($stripe + $spacing)) * 100%,
+			transparent ($stripe / ($stripe + $spacing)) * 100%,
+			transparent 100%
+		)
+	));
+	background-size: ($stripe + $spacing) * 1px ($stripe + $spacing) * 1px;
+	height: $height * 1px;
+	border: none;
+}
+@mixin btmArrow($color:$color-border) {
+	&:after,
+	&:before {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		content: " ";
+		height: 0;
+		width: 0;
+		border: solid transparent;
+		pointer-events: none;
+		z-index: 10;
+	}
+	&:after {
+		border-color: rgba($color, 0);
+		border-top-color: $color;
+		border-width: 10px;
+		margin-left: -10px;
+	}
+	&:before {
+		border-color: rgba($color-border, 0);
+		border-top-color: $color-border;
+		border-width: 11px;
+		margin-left: -11px;
+	}
+}
+@mixin btmArrow-color($color:$color-border) {
+	border-color: rgba($color, 0);
+	border-top-color: $color;
+}
+
+// rgba()をIE8以下でも使用する (例) filter: rgbaIE(#000,0.6);
+@function rgbaIE($color: #000000, $opacity: 0.6) {
+	$ie_color: ie-hex-str(rgba($color,$opacity));
+	@return progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#{$ie_color},EndColorStr=#{$ie_color});
+}
+
+// $widthが割り当てられていない場合は640pxを代入する
+$width: 640px !default;
+
+// percentage()の短縮形 (例) width: per(300px);
+@function per($num, $device: normal) {
+	@if $device == normal {
+		@return #{($num / $width) * 100 + '%'};
+	} @else {
+		@return #{($num / $device) * 100 + '%'};
+	}
+}
+@function vw($num, $negative: false) {
+	@if $negative == true {
+		@return #{-($num / $width) * 100 + 'vw'};
+	} @else {
+		@return #{($num / $width) * 100 + 'vw'};
+	}
+}
+@function vh($num, $negative: false) {
+	@if $negative == true {
+		@return #{-($num / $width) * 100 + 'vh'};
+	} @else {
+		@return #{($num / $width) * 100 + 'vh'};
+	}
+}
+// ====================================== //
