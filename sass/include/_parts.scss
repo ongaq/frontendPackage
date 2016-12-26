@@ -19,17 +19,11 @@
 	$experimental-support-for-microsoft : false;
 
 	@if $point == desktop {
-		@media (min-width: $break-1200) { @content; }
+		@media (min-width: $break-980) { @content;}
 	} @else if $point == tablet {
-		@media (min-width: $break-768) {
-			@content;
-		}
+		@media (min-width: $break-768) { @content;}
 	} @else if $point == mobile or $point == sp {
-		@media only screen
-		 and (min-width : $break-320)
-		 and (max-width : $break-767) {
-			 @content;
-		 }
+		@media (min-width: $break-320) { @content;}
 	}
 }
 @mixin dotted($color:rgba(#000, 1.0), $stripe:1, $spacing:4, $height:1) {
@@ -94,18 +88,26 @@ $width: 640px !default;
 		@return #{($num / $device) * 100 + '%'};
 	}
 }
-@function vw($num, $negative: false) {
-	@if $negative == true {
-		@return #{-($num / $width) * 100 + 'vw'};
+@function vw($num, $device:desktop) {
+	@if $device == desktop {
+		@return #{($num / $pc_num) * 100 + 'vw'};
+	} @elseif $device == tablet {
+		@return #{($num / $tablet_num) * 100 + 'vw'};
+	} @elseif $device == sp {
+		@return #{($num / $sp_num) * 100 + 'vw'};
 	} @else {
-		@return #{($num / $width) * 100 + 'vw'};
+		@return #{($num / $device) * 100 + 'vw'};
 	}
 }
-@function vh($num, $negative: false) {
-	@if $negative == true {
-		@return #{-($num / $width) * 100 + 'vh'};
+@function vh($num, $device:desktop) {
+	@if $device == desktop {
+		@return #{($num / $pc_num) * 100 + 'vh'};
+	} @elseif $device == tablet {
+		@return #{($num / $tablet_num) * 100 + 'vh'};
+	} @elseif $device == sp {
+		@return #{($num / $sp_num) * 100 + 'vh'};
 	} @else {
-		@return #{($num / $width) * 100 + 'vh'};
+		@return #{($num / $device) * 100 + 'vh'};
 	}
 }
 // ====================================== //

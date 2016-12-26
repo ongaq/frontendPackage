@@ -45,12 +45,22 @@
 @font-face {
 	font-family: "MyYuGothicM";
 	font-weight: normal;
-	src: local("YuGothic-Medium");
+	src: local("YuGothic-Medium"), local("Yu Gothic Medium");
 }
 @font-face {
 	font-family: "MyYuGothicM";
 	font-weight: bold;
-	src: local("YuGothic-Bold");
+	src: local("YuGothic-Bold"), local("Yu Gothic");
+}
+@font-face {
+	font-family: "MyYuMinchoM";
+	font-weight: normal;
+	src: local("YuMincho-Regular"), local("Yu Mincho");
+}
+@font-face {
+	font-family: "MyYuMinchoM";
+	font-weight: bold;
+	src: local("YuMincho-Demibold"), local("Yu Mincho Demibold");
 }
 html {
 	font-size: 62.5%;
@@ -58,6 +68,21 @@ html {
 body {
 	font-size: 1.3rem;
 	font-family: $font_gothic;
+}
+
+[data-view*="sp"] {
+	@include media(tablet) { display: none;}
+}
+[data-view*="tablet"] {
+	display: none;
+
+	@include media(tablet) { display: initial;}
+	@include media(desktop) { display: none;}
+}
+[data-view*="desktop"] {
+	display: none;
+
+	@include media(desktop) { display: initial;}
 }
 /* ====================================== */
 /*!

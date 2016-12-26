@@ -30,8 +30,12 @@ $break-320: 20em;
 $break-321: 20.0625em;
 $break-480: 30em;
 $break-600: 37.5em;
+$break-640: 40em;
+$break-641: 40.063em;
 $break-767: 47.938em;
 $break-768: 48em;
+$break-769: 48.063em;
+$break-979: 61.188em;
 $break-980: 61.25em;
 $break-1024: 64em;
 $break-1200: 75em;
@@ -39,6 +43,15 @@ $break-1224: 76.5em;
 $break-1280: 80em;
 $break-1366: 85.375em;
 $break-1824: 114em;
+
+// 横幅定義
+$width: 1024px;
+$pc: 1366px;
+$pc_num: 1366;
+$tablet: 768px;
+$tablet_num: 768;
+$sp: 640px;
+$sp_num: 640;
 
 // 色定義
 $color-red: #dd2211;
@@ -62,6 +75,7 @@ $color-line: #00bc2a;
 $font_alphabet: "Times New Roman", "AXIS Std", sans-serif;
 $font_gothic_ja: MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 $font_gothic: $font_gothic_ja;
-$font_mincho: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "HGS明朝E", Meiryo, sans-serif;
+// $font_mincho: "Sawarabi Mincho", MyYuMinchoM, "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HGS明朝E", Meiryo, sans-serif;
+$font_mincho: MyYuMinchoM, "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HGS明朝E", Meiryo, sans-serif;
 
 // ============================================================
